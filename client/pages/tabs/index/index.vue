@@ -4,8 +4,9 @@
 	  <uni-nav-bar :fixed="true" :statusBar="true" :border="false" background-color="#0863cc">
 		<view class="zhuige-top-bar" :style="style">
 		  <template v-slot:left>
-			<view v-if="logo" class="zhuige-top-logo">
-			  <image mode="heightFix" :src="logo"></image>
+			<view class="zhuige-top-logo">
+			  <image v-if="!isLoading && logo" mode="heightFix" :src="logo"></image>
+			  <view v-else class="logo-placeholder"></view>
 			</view>
 		  </template>
 		  <view class="zhuige-top-search" @click="openLink('/pages/base/search/search')">
@@ -28,13 +29,15 @@
 	  </view>
 	
 	  <!-- 轮播图模块 -->
-	  <view v-if="slides && slides.length > 0" class="zhuige-wide-box">
-		<zhuige-swiper :items="slides" />
+	  <view class="zhuige-wide-box swiper-wrapper" v-if="!isLoading">
+	    <zhuige-swiper v-if="slides && slides.length > 0" :items="slides" />
+	    <view v-else class="empty-placeholder"></view>
 	  </view>
 	
 	  <!-- 金刚位模块 -->
-	  <view v-if="icons && icons.length > 0" class="zhuige-wide-box">
-		<zhuige-icons :items="icons" />
+	  <view class="zhuige-wide-box icons-wrapper" v-if="!isLoading">
+	    <zhuige-icons v-if="icons && icons.length > 0" :items="icons" />
+	    <view v-else class="empty-placeholder"></view>
 	  </view>
 	  
 	  <!-- 身高专题模块 -->
@@ -106,14 +109,18 @@ export default {
 		heightData: this.getDefaultHeightData(),
 		apiBaseUrl: 'https://x.erquhealth.com/wp-json/zhuige/sgtool',
 		sgztmkModules: [],
-		isModulesLoading: true
+		isModulesLoading: true,
+		logoCacheKey: 'zhuige_xcx_logo_cache',
+		logoCacheTime: 'zhuige_xcx_logo_cache_time'
 	  }
 	},
 	onLoad() {
+	  this.loadCachedLogo();
 	  this.refresh();
 	  this.fetchUserHeightData();
 	},
 	onShow() {
+	  this.loadCachedLogo();
 	  this.refresh();
 	  const auth = uni.getStorageSync('zhuige_xcx_user');
 	  if (auth && auth.user_id) {
@@ -129,10 +136,30 @@ export default {
 	  refresh() {
 		this.loadSetting();
 	  },
+	  loadCachedLogo() {
+		// 尝试从缓存加载logo
+		const cachedLogo = uni.getStorageSync(this.logoCacheKey);
+		const cacheTime = uni.getStorageSync(this.logoCacheTime);
+		const now = new Date().getTime();
+		
+		// 如果有缓存且未过期（24小时有效期）
+		if (cachedLogo && cacheTime && (now - cacheTime < 24 * 60 * 60 * 1000)) {
+		  this.logo = cachedLogo;
+		  this.isLoading = false;
+		}
+	  },
+
 	  loadSetting() {
 		Rest.post(Api.URL('setting', 'home'))
 		  .then(res => {
-			this.logo = res.data.logo;
+			// 检查logo是否有变化
+			if (this.logo !== res.data.logo) {
+			  this.logo = res.data.logo;
+			  // 更新logo缓存
+			  uni.setStorageSync(this.logoCacheKey, res.data.logo);
+			  uni.setStorageSync(this.logoCacheTime, new Date().getTime());
+			}
+			
 			this.slides = res.data.slides;
 			this.icons = res.data.icons;
 			if (res.data.style) {
@@ -254,9 +281,19 @@ export default {
 	display: flex;
 	align-items: center;
 	margin-right: 15rpx;
+	height: 48rpx;
+	width: 128rpx;
+
 	image {
 	  height: 48rpx;
 	  width: 128rpx;
+	}
+
+	.logo-placeholder {
+	  height: 48rpx;
+	  width: 128rpx;
+	  background-color: rgba(255, 255, 255, 0.2);
+	  border-radius: 6rpx;
 	}
 }
 
@@ -281,6 +318,17 @@ export default {
 .height-predict-wrapper {
 	padding: 0;
 	margin: 20rpx 0;
+}
+
+.swiper-wrapper, .icons-wrapper {
+	min-height: 200rpx;
+}
+
+.empty-placeholder {
+	width: 100%;
+	height: 200rpx;
+	background-color: rgba(245, 245, 245, 0.5);
+	border-radius: 12rpx;
 }
 
 :deep(.height-predict-container) {

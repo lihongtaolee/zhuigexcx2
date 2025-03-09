@@ -7,7 +7,7 @@
     </view>
 
     <!-- 整个模块内容容器 -->
-    <view class="sgztmk-module-container" v-show="isLoaded">
+    <view class="sgztmk-module-container" :class="{ 'is-loading': !isLoaded }">
       <!-- 左侧模块 -->
       <view class="left-module" @click="handleClick(leftModule.link)" :style="{ 'background-color': leftModule.bgColor }">
         <!-- 显示圆形数值区域，居中显示 -->
@@ -224,6 +224,11 @@ export default {
   border-radius: 24rpx;
   overflow: hidden;
   margin-bottom: 20rpx;
+}
+
+.is-loading {
+  opacity: 0.6;
+  min-height: 420rpx;
 }
 
 .module-header {

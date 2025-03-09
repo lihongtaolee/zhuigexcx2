@@ -275,13 +275,7 @@
 			"pages": [{
 				"path": "index",
 				"style": {
-					"navigationBarTitleText": "商品分发",
-					"enablePullDownRefresh": true
-				}
-			}, {
-				"path": "category",
-				"style": {
-					"navigationBarTitleText": "分类详情",
+					"navigationBarTitleText": "商品频道",
 					"enablePullDownRefresh": true
 				}
 			}, {

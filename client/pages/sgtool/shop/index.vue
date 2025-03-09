@@ -554,7 +554,7 @@ export default {
   padding: 0 30rpx;
   height: 90rpx;
   line-height: 90rpx;
-  font-size: 28rpx;
+  font-size: 32rpx;
   color: #333;
   position: relative;
 }
@@ -578,8 +578,8 @@ export default {
 
 .kingkong-module {
   background-color: #ffffff;
-  padding: 30rpx 20rpx;
-  margin: 20rpx 0;
+  padding: 10rpx 20rpx;
+  margin: 0 0 4rpx 0;
   border-radius: 12rpx;
   box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.03);
 }
@@ -613,13 +613,28 @@ export default {
 
 /* 推荐模块样式 - 按照效果图重新设计 */
 .recommend-section {
-  padding: 20rpx;
-  margin-bottom: 0; /* 去掉商品推荐模块与商品图片上方的间距 */
+  padding: 0;
+  margin: 0; /* 上下外间距为0 */
+  background-color: #ffffff;
 }
 
 .recommend-row {
   display: flex;
   justify-content: space-between;
+  position: relative;
+  background-color: #ffffff;
+  padding: 10rpx 20rpx;
+}
+
+.recommend-row::after {
+  content: '';
+  position: absolute;
+  top: 15%;
+  bottom: 15%;
+  left: 50%;
+  width: 1rpx;
+  background-color: #eee;
+  transform: translateX(-50%);
 }
 
 .recommend-module {
@@ -627,14 +642,17 @@ export default {
   background-color: #ffffff;
   border-radius: 12rpx;
   overflow: hidden;
-  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
-  padding: 20rpx;
+  padding: 10rpx;
+  display: flex;
+  justify-content: center;
 }
 
 .recommend-content {
   display: flex;
   height: 100%;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
 }
 
 .recommend-text {
@@ -656,7 +674,7 @@ export default {
 }
 
 .recommend-images {
-  width: 100rpx;
+  width: 150rpx;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -670,8 +688,8 @@ export default {
 }
 
 .recommend-product {
-  width: 45rpx;
-  height: 45rpx;
+  width: 70rpx;
+  height: 70rpx;
   overflow: hidden;
   border-radius: 6rpx;
   margin-right: 5rpx;
@@ -691,7 +709,8 @@ export default {
 .product-list {
   display: flex;
   flex-wrap: wrap;
-  padding: 20rpx;
+  padding: 4rpx;
+  margin: 0;
   background-color: #f8f8f8;
 }
 
@@ -711,19 +730,18 @@ export default {
 }
 
 .product-info {
-  padding: 16rpx;
+  padding: 10rpx 16rpx 16rpx;
 }
 
 .product-title {
   font-size: 28rpx;
   color: #333;
   line-height: 1.3;
-  height: 72rpx;
+  height: 36rpx;
   overflow: hidden;
   text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  white-space: nowrap;
+  padding-right: 28rpx;
   margin-bottom: 0; /* 去掉商品标题和价格之间的间距 */
 }
 

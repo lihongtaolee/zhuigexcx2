@@ -1,7 +1,7 @@
 <template>
   <view class="subcategory-container">
     <!-- 三级分类筛选 -->
-    <view class="filter-section">
+    <view class="filter-section" v-if="thirdCategories.length > 0">
       <scroll-view class="filter-scroll" scroll-x="true" show-scrollbar="false">
         <view class="filter-list">
           <view 
@@ -323,7 +323,7 @@ export default {
   padding: 0 30rpx;
   height: 90rpx;
   line-height: 90rpx;
-  font-size: 28rpx;
+  font-size: 32rpx;
   color: #333;
   position: relative;
 }
@@ -348,13 +348,13 @@ export default {
 .product-list {
   display: flex;
   flex-wrap: wrap;
-  padding: 20rpx;
-  margin-top: 20rpx;
+  padding: 4rpx;
+  margin: 0;
 }
 
 .product-item {
-  width: calc(50% - 20rpx);
-  margin: 10rpx;
+  width: calc(50% - 8rpx);
+  margin: 4rpx;
   background-color: #ffffff;
   border-radius: 12rpx;
   overflow: hidden;
@@ -367,19 +367,18 @@ export default {
 }
 
 .product-info {
-  padding: 20rpx;
+  padding: 10rpx 16rpx 16rpx;
 }
 
 .product-title {
   font-size: 28rpx;
   color: #333;
   line-height: 1.4;
-  height: 80rpx;
+  height: 40rpx;
   overflow: hidden;
   text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  white-space: nowrap;
+  padding-right: 28rpx;
 }
 
 .product-price-row {

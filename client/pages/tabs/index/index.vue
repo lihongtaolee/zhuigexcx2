@@ -1,7 +1,7 @@
 <template>
 	<view class="content">
 	  <!-- 搜索顶部模块 -->
-	  <uni-nav-bar :fixed="true" :statusBar="true" :border="false" background-color="#0863cc">
+	  <uni-nav-bar :fixed="true" :statusBar="true" :border="false" background-color="#6a5acd">
 		<view class="zhuige-top-bar" :style="style">
 		  <template v-slot:left>
 			<view class="zhuige-top-logo">
@@ -295,8 +295,16 @@ export default {
 	  async fetchUserHeightData() {
 		const auth = uni.getStorageSync('zhuige_xcx_user');
 		
-		if (!auth || !auth.user_id) {
+		// 先使用默认数据或缓存数据
+		const cachedHeightData = uni.getStorageSync('zhuige_height_data_cache');
+		if (cachedHeightData) {
+		  this.heightData = JSON.parse(cachedHeightData);
+		} else {
 		  this.heightData = this.getDefaultHeightData();
+		}
+		
+		// 如果未登录，直接返回默认数据
+		if (!auth || !auth.user_id) {
 		  this.isLoading = false;
 		  return;
 		}
@@ -313,7 +321,8 @@ export default {
 			const data = res.data.data;
 			
 			if (data && data.baobaoname && data.current_height && data.target_height && data.prediction_probability) {
-			  this.heightData = {
+			  // 准备新数据
+			  const newHeightData = {
 				geneticHeight: Number(data.gender === 1 ? data.boy_genetic_height : data.girl_genetic_height),
 				currentHeight: Number(data.current_height),
 				targetHeight: Number(data.target_height),
@@ -321,13 +330,16 @@ export default {
 				baobaoname: data.baobaoname,
 				updateTime: data.create_time
 			  };
-			} else {
-			  this.heightData = this.getDefaultHeightData();
+			  
+			  // 缓存数据
+			  uni.setStorageSync('zhuige_height_data_cache', JSON.stringify(newHeightData));
+			  
+			  // 一次性更新数据
+			  this.heightData = newHeightData;
 			}
 		  }
 		} catch (err) {
 		  uni.showToast({ title: '获取数据失败', icon: 'none' });
-		  this.heightData = this.getDefaultHeightData();
 		} finally {
 		  this.isLoading = false;
 		}
@@ -414,6 +426,7 @@ export default {
 .zhuige-top-logo {
 	display: flex;
 	align-items: center;
+	margin-left: 20rpx;
 	margin-right: 15rpx;
 	height: 48rpx;
 	width: 128rpx;
@@ -439,7 +452,7 @@ export default {
 	padding-left: 20rpx;
 	color: #999999;
 	font-size: 28rpx;
-	border: 1rpx solid #999999;
+	border: 1rpx solid #b8b3e9;
 	border-radius: 16rpx;
 }
 
@@ -482,7 +495,7 @@ export default {
   left: 0;
   width: 100%;
   height: 200rpx;
-  background: linear-gradient(90deg, #f0f0f0 25%, #f8f8f8 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, #f0f0f0 25%, #f8f6ff 50%, #f0f0f0 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
   border-radius: 12rpx;
@@ -516,7 +529,7 @@ export default {
 .skeleton-sgztmk {
   width: 100%;
   height: 400rpx;
-  background: linear-gradient(90deg, #f0f0f0 25%, #f8f8f8 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, #f0f0f0 25%, #f8f6ff 50%, #f0f0f0 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
   border-radius: 12rpx;
@@ -540,11 +553,11 @@ export default {
 }
 
 :deep(.height-predict-container) {
-	background: linear-gradient(135deg, #f5f5f5 0%, #e8f4ff 100%);
+	background: linear-gradient(135deg, #f5f5f5 0%, #e8e4ff 100%);
 	border-radius: 24rpx;
 	padding: 30rpx;
 	margin: 0;
-	box-shadow: 0 8rpx 24rpx rgba(8, 99, 204, 0.1);
+	box-shadow: 0 8rpx 24rpx rgba(106, 90, 205, 0.1);
 	position: relative;
 	z-index: 1;
 }

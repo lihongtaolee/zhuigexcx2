@@ -9,7 +9,7 @@
       <text class="baobao-name">{{ baobaoname }}</text>
     </view>
 
-    <!-- 数据展示区域 -->
+    <!-- 数据展示区域 - 使用简单直接的结构 -->
     <view class="data-section">
       <view class="data-item">
         <image class="icon" src="/static/sgtoolimages/astronaut.png" mode="aspectFit"></image>
@@ -50,38 +50,34 @@ export default {
   props: {
     currentHeight: {
       type: Number,
-      required: true
+      required: true,
+      default: 0
     },
     geneticHeight: {
       type: Number,
-      required: true
+      required: true,
+      default: 0
     },
     targetHeight: {
       type: Number,
-      required: true
+      required: true,
+      default: 0
     },
     probability: {
       type: Number,
-      required: true
+      required: true,
+      default: 0
     },
     baobaoname: {
       type: String,
-      required: true
+      required: true,
+      default: '演示宝宝'
     },
     updateTime: {
       type: String,
       default: ''
     }
   },
-  watch: {
-    currentHeight(newVal) {},
-    geneticHeight(newVal) {},
-    targetHeight(newVal) {},
-    probability(newVal) {},
-    baobaoname(newVal) {},
-    updateTime(newVal) {}
-  },
-  created() {},
   methods: {
     openDetail() {
       if (typeof uni !== 'undefined') {
@@ -94,11 +90,11 @@ export default {
 
 <style lang="scss" scoped>
 .height-predict-container {
-  background: linear-gradient(135deg, #f5f5f5 0%, #e8f4ff 100%);
+  background: linear-gradient(135deg, #f5f5f5 0%, #e8e4ff 100%);
   border-radius: 16rpx;
   padding: 20rpx;
   margin: 0;
-  box-shadow: 0 4rpx 12rpx rgba(8, 99, 204, 0.1);
+  box-shadow: 0 4rpx 12rpx rgba(106, 90, 205, 0.1);
   position: relative;
   overflow: visible;
 }
@@ -154,11 +150,12 @@ export default {
     .value {
       font-size: 40rpx;
       font-weight: 800;
-      color: #0863cc;
+      color: #7b68ee;
       margin-bottom: 10rpx;
+      text-align: center;
       
       &.probability {
-        color: #00b800;
+        color: #7b68ee;
       }
 
       .unit {
@@ -177,7 +174,7 @@ export default {
 }
 
 .detail-guide-wrapper {
-  background: linear-gradient(to right, #ffd6e7, #ffb6c1);
+  background: linear-gradient(to right, rgba(123, 104, 238, 0.8), rgba(106, 90, 205, 0.8));
   border-radius: 12rpx;
   padding: 12rpx;
   display: flex;
@@ -193,20 +190,25 @@ export default {
 
     .guide-text {
       font-size: 28rpx;
-      color: #0863cc;
+      color: #ffffff;
       font-weight: 700;
     }
 
     .guide-icon {
       margin-left: 6rpx;
-      color: #0863cc;
+      color: #ffffff;
       font-weight: 700;
     }
   }
 
   .guide-desc {
     font-size: 20rpx;
-    color: #666;
+    color: rgba(255, 255, 255, 0.9);
   }
+}
+
+.highlight {
+  color: #6a5acd;
+  font-weight: bold;
 }
 </style>

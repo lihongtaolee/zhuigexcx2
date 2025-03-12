@@ -259,4 +259,28 @@ export default {
     flex-direction: column;
     align-items: center;
 }
+
+.icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 25%;
+  padding: 20rpx 0;
+}
+
+.icon-image {
+  width: 80rpx;
+  height: 80rpx;
+  margin-bottom: 10rpx;
+}
+
+.icon-title {
+  font-size: 24rpx;
+  color: #333333;
+}
+
+.icon-item:active {
+  background-color: rgba(106, 90, 205, 0.1);
+}
 </style>

@@ -257,6 +257,7 @@ export default {
   height: 420rpx;
 }
 
+/* ===== 左侧模块样式（恢复原样） ===== */
 .left-module {
   flex: 1;
   height: 100%;
@@ -280,11 +281,59 @@ export default {
 .value-text {
   font-size: 80rpx;
   font-weight: bold;
-  color: #1890ff;
+  color: #7b68ee;
   text-shadow: 2rpx 2rpx 4rpx rgba(0, 0, 0, 0.2);
   transform: translateY(-4rpx);
 }
 
+.left-module .module-content {
+  position: absolute;
+  z-index: 2;
+  padding: 10rpx;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+.left-module .module-title {
+  font-size: 32rpx;
+  font-weight: normal;
+  margin-bottom: 20rpx;
+  color: #6a5acd;
+}
+
+.left-module .module-desc {
+  font-size: 24rpx;
+  color: #666;
+  text-decoration: none;
+  margin-bottom: 0;
+}
+
+.left-module .module-button {
+  display: inline-block;
+  padding: 6rpx 16rpx;
+  background-color: #6a5acd;
+  color: #ffffff;
+  border-radius: 30rpx;
+  font-size: 24rpx;
+  margin-top: 10rpx;
+}
+
+.left-module .module-image {
+  right: 50%;
+  transform: translateX(50%);
+  width: 140rpx;
+  height: 140rpx;
+  position: absolute;
+  bottom: 10rpx;
+  z-index: 1;
+}
+
+/* ===== 右侧模块样式（保持最新） ===== */
 .right-modules {
   flex: 1;
   display: flex;
@@ -300,66 +349,69 @@ export default {
   overflow: hidden;
 }
 
-.module-content {
+.right-module .module-content {
   position: absolute;
   z-index: 2;
-  padding: 10rpx; // 缩小内容区域内边距
+  padding: 16rpx;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start; // 内容靠左上对齐
+  align-items: flex-start;
   box-sizing: border-box;
-  gap: 8rpx; // 缩小标题、描述、按钮之间的间距
+  padding-top: 12rpx;
 }
 
-.module-title {
-  font-size: 28rpx;
+.right-module .module-title {
+  font-size: 28rpx; /* 稍微减小字体大小 */
   font-weight: normal;
-  color: #000;
+  margin-bottom: 6rpx;
+  color: #6a5acd;
+  line-height: 1.2;
 }
 
-.module-desc {
+.right-module .module-desc {
   font-size: 24rpx;
-  color: #0863cc;
+  color: #666666;
   text-decoration: underline;
   cursor: pointer;
+  margin-bottom: 6rpx;
+  line-height: 1.2;
 }
 
-.left-module .module-desc {
-  color: #666;
-  text-decoration: none;
-  margin-bottom: 0; // 去除默认下边距
+.right-module .module-button {
+  display: inline-block;
+  padding: 4rpx 12rpx; /* 减小按钮内边距 */
+  background-color: #6a5acd;
+  color: #ffffff;
+  border-radius: 30rpx;
+  font-size: 22rpx; /* 减小按钮字体 */
+  margin-top: 6rpx;
+  line-height: 1.2;
 }
 
-.module-button {
-  display: inline-flex;
-  padding: 6rpx 16rpx;
-  background: #0863cc;
-  border-radius: 20rpx;
-  align-self: flex-start;
+.right-module .module-image {
+  position: absolute;
+  right: 10rpx;
+  bottom: 10rpx;
+  width: 100rpx; /* 减小图片尺寸 */
+  height: 100rpx;
+  z-index: 1;
 }
 
+/* 通用按钮文本样式 */
 .module-button text {
-  font-size: 24rpx;
   color: #fff;
   white-space: nowrap;
 }
 
-.module-image {
-  position: absolute;
-  right: 10rpx; // 调整图片位置
-  bottom: 10rpx;
-  width: 120rpx;
-  height: 120rpx;
-  z-index: 1;
+.right-module .module-button text {
+  font-size: 22rpx;
+  line-height: 1.2;
 }
 
-.left-module .module-image {
-  right: 50%;
-  transform: translateX(50%);
-  width: 140rpx;
-  height: 140rpx;
+.left-module .module-button text {
+  font-size: 24rpx;
 }
 </style>

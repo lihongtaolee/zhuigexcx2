@@ -5,8 +5,7 @@
     "pages/tabs/create/create",
     "pages/tabs/notice/notice",
     "pages/tabs/mine/mine",
-    "pages/sgtool/sgtest/sgtest",
-    "pages/sgtool/sgycai/sgycai"
+    "pages/sgtool/sgtest/sgtest"
   ],
   "subPackages": [
     {
@@ -54,6 +53,16 @@
       "pages": [
         "index",
         "subcategory"
+      ]
+    },
+    {
+      "root": "pages/sgtool/sgycai",
+      "pages": [
+        "sgycai",
+        "main",
+        "assessment",
+        "result",
+        "share"
       ]
     }
   ],

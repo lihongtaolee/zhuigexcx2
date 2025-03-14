@@ -39,11 +39,6 @@
 			"style" : {
 				"navigationBarTitleText" : "遗传身高预测"  //  设置导航栏标题
 			}
-		}, {
-			"path" : "pages/sgtool/sgycai/sgycai",
-			"style" : {
-				"navigationBarTitleText" : "身高预测AI"
-			}
 		}
 	],
 	"globalStyle": {
@@ -285,6 +280,46 @@
 					"enablePullDownRefresh": true
 				}
 			}]
+		},
+		{
+			"root": "pages/sgtool/sgycai",
+			"pages": [
+				{
+					"path": "sgycai",
+					"style": {
+						"navigationBarTitleText": "身高预测AI",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "main",
+					"style": {
+						"navigationBarTitleText": "身高免费评测首页",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "assessment",
+					"style": {
+						"navigationBarTitleText": "身高免费评测详情页",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "result",
+					"style": {
+						"navigationBarTitleText": "身高免费评测结果页",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "share",
+					"style": {
+						"navigationBarTitleText": "身高免费评测分享页",
+						"enablePullDownRefresh": false
+					}
+				}
+			]
 		}
 	]
 }

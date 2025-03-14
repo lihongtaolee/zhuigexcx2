@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>儿童身高在线评测 - 导航页</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="main-page">
+    <div class="container">
+        <header class="main-header">
+            <h1>儿童身高在线评测</h1>
+            <p class="subtitle">专业评估，科学指导，助力宝宝健康成长</p>
+        </header>
+        
+        <div class="navigation-cards">
+            <a href="assessment.html" class="nav-card">
+                <div class="card-icon">
+                    <img src="https://img.icons8.com/color/96/test-partial-passed.png" alt="评测图标" style="width: 80px; height: 80px;">
+                </div>
+                <h2>开始评测</h2>
+                <p>30道专业题目，全面评估宝宝身高发育状况</p>
+            </a>
+            
+            <a href="result.html" class="nav-card">
+                <div class="card-icon">
+                    <img src="https://img.icons8.com/color/96/combo-chart--v1.png" alt="结果图标" style="width: 80px; height: 80px;">
+                </div>
+                <h2>评测结果</h2>
+                <p>查看详细的评测报告和专业建议</p>
+            </a>
+            
+            <a href="share.html" class="nav-card">
+                <div class="card-icon">
+                    <img src="https://img.icons8.com/color/96/share-rounded.png" alt="分享图标" style="width: 80px; height: 80px;">
+                </div>
+                <h2>邀请分享</h2>
+                <p>与亲友分享评测，共同关注宝宝健康成长</p>
+            </a>
+        </div>
+        
+        <div class="intro-section">
+            <h2>关于儿童身高评测</h2>
+            <p>我们的评测系统基于专业医学研究，从四大维度全面评估宝宝的身高发育状况，为您提供科学的成长指导。</p>
+            
+            <div class="dimension-cards">
+                <div class="dimension-card">
+                    <h3>遗传因素</h3>
+                    <p>评估父母身高、家族遗传等因素对宝宝身高的影响</p>
+                </div>
+                <div class="dimension-card">
+                    <h3>营养状况</h3>
+                    <p>分析宝宝的饮食结构、营养摄入是否均衡充足</p>
+                </div>
+                <div class="dimension-card">
+                    <h3>运动习惯</h3>
+                    <p>评估宝宝的运动频率、强度和类型是否有利于身高发育</p>
+                </div>
+                <div class="dimension-card">
+                    <h3>睡眠质量</h3>
+                    <p>分析宝宝的睡眠时长、质量对生长激素分泌的影响</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="main-footer">
+        <p>儿童身高在线评测 © 2023</p>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 导航卡片点击效果
+            const navCards = document.querySelectorAll('.nav-card');
+            navCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-5px)';
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

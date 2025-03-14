@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>儿童身高评测 - 答题页</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="assessment-page">
+    <div class="share-icon">
+        <img src="https://img.icons8.com/fluency/48/share-rounded.png" alt="分享">
+    </div>
+    
+    <div class="question-container">
+        <!-- 上部分 -->
+        <div class="assessment-header">
+            <div class="progress-section">
+                <div class="dimension-info">
+                    <div class="dimension-icon">
+                        <img src="https://img.icons8.com/color/96/dna-helix.png" alt="遗传因素">
+                    </div>
+                    <div class="dimension-text">
+                        <h2>第一部分：遗传因素 (1/4)</h2>
+                    </div>
+                </div>
+                
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 10%;"></div>
+                    <div class="progress-text">3/30题</div>
+                </div>
+            </div>
+            
+            <div class="dimension-description">
+                <p>遗传因素是影响儿童身高的重要决定因素之一。父母的身高、家族遗传特征等都会对孩子的最终身高产生显著影响。通过科学评估，可以更准确地预测孩子的身高发育潜力。</p>
+            </div>
+        </div>
+        
+        <!-- 下部分 -->
+        <div class="question-section">
+            <div class="question-swiper">
+                <!-- 问题1 -->
+                <div class="question-slide active">
+                    <div class="question-content">
+                        <h3 class="question-title">问题3：父亲的身高是多少？</h3>
+                        <div class="options-list">
+                            <div class="option">
+                                <input type="radio" id="q3-a" name="q3">
+                                <label for="q3-a">165cm以下</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" id="q3-b" name="q3">
+                                <label for="q3-b">165-170cm</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" id="q3-c" name="q3">
+                                <label for="q3-c">170-175cm</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" id="q3-d" name="q3">
+                                <label for="q3-d">175-180cm</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" id="q3-e" name="q3">
+                                <label for="q3-e">180cm以上</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="navigation-buttons">
+                        <button class="prev-btn">上一题</button>
+                        <button class="next-btn">下一题</button>
+                    </div>
+                </div>
+                
+                <!-- 问题2（隐藏状态） -->
+                <div class="question-slide">
+                    <div class="question-content">
+                        <h3 class="question-title">问题4：母亲的身高是多少？</h3>
+                        <div class="options-list">
+                            <div class="option">
+                                <input type="radio" id="q4-a" name="q4">
+                                <label for="q4-a">155cm以下</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" id="q4-b" name="q4">
+                                <label for="q4-b">155-160cm</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" id="q4-c" name="q4">
+                                <label for="q4-c">160-165cm</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" id="q4-d" name="q4">
+                                <label for="q4-d">165-170cm</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" id="q4-e" name="q4">
+                                <label for="q4-e">170cm以上</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="navigation-buttons">
+                        <button class="prev-btn">上一题</button>
+                        <button class="next-btn">下一题</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 维度切换提示 -->
+    <div class="dimension-transition" style="display: none;">
+        <div class="transition-content">
+            <div class="dimension-icon large">
+                <img src="https://img.icons8.com/fluency/96/healthy-food.png" alt="营养状况">
+            </div>
+            <h2>第二部分：营养状况</h2>
+            <p>良好的营养是儿童身高发育的重要保障。我们将评估宝宝的饮食结构、营养摄入是否均衡充足，为您提供科学的饮食建议。</p>
+            <button class="continue-btn">开始答题</button>
+        </div>
+    </div>
+    
+    <script src="scripts.js"></script>
+</body>
+</html> 
